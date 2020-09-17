@@ -31,3 +31,9 @@ df = pd.DataFrame()
 df['ratings']=ratings
 df['companies'] = companies
 print(df.head())
+
+total_ratings = df.groupby('companies').ratings.sum().reset_index()
+print(total_ratings)
+
+largest_10 = total_ratings.nlargest(10,'ratings')
+print(largest_10)
