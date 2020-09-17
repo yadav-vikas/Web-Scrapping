@@ -1,4 +1,3 @@
-
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -18,7 +17,17 @@ print("===============================")
 print(ratings)
 plt.hist(ratings)
 plt.show()
+
+companies = []
+print("---------------------")
+company_list = soup.select(".Company")
+print(company_list)
+for i in range(1,len(company_list)):
+  companies.append(company_list[i].get_text())
+print("===============================")
+print(companies)
+
 df = pd.DataFrame()
 df['ratings']=ratings
+df['companies'] = companies
 print(df.head())
-
